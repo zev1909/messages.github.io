@@ -20,10 +20,30 @@ body {
 
 .envelope {
     cursor: pointer;
+    width: 150px; /* Adjust the size of the envelope */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .message {
-    font-size: 24px;
+    font-size: 28px; /* Increase the font size */
     margin-top: 20px;
     display: none; /* Initially hide message */
+    opacity: 0;
+    animation: floatIn 2s forwards;
+}
+
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
