@@ -31,17 +31,12 @@ const sentences = [
     "Please come back ASAP and complete my daily life"
 ];
 
-function getTodaysIndex() {
-    const startDate = new Date("2024-06-17T00:00:00Z"); // Replace with your start date
-    const today = new Date();
-    const diffTime = Math.abs(today - startDate);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays % sentences.length;
-}
-
 function showMessage() {
-    const index = getTodaysIndex();
+    const randomIndex = Math.floor(Math.random() * sentences.length);
     const messageElement = document.getElementById("message");
-    messageElement.innerText = sentences[index];
+    messageElement.innerText = sentences[randomIndex];
     messageElement.style.display = "block"; // Show message
+    // Trigger reflow to restart animation
+    void messageElement.offsetWidth;
+    messageElement.style.animation = "floatIn 2s forwards";
 }
